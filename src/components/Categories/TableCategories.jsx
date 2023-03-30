@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import React from "react";
+import { useFetch } from "../../hooks/useFetch";
 import { AiFillEdit } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import Modals from "./Modals";
+import { Link } from "react-router-dom";
 
 const TableCategories = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/categories`);
   return (
     <>
+      <div className="row m-3">
+        <div className="col-12 d-flex justify-content-end">
+          <Link to="/categories/create">
+            <button className="btn btn-warning text-white">New</button>
+          </Link>
+        </div>
+      </div>
       <table className="table">
         <thead>
           <tr className="text-center">
@@ -26,19 +30,15 @@ const TableCategories = () => {
                 <th scope="row">{cat.id}</th>
                 <td>{cat.name}</td>
                 <td className="d-flex justify-content-around">
-                  <AiFillEdit
-                    className="text-primary"
-                    onClick={handleShow}
-                    data={cat}
-                  />
-
+                  <Link to="/categories/edit" state={cat}>
+                    <AiFillEdit className="text-primary" data={cat} />
+                  </Link>
                   <BsFillTrashFill className="text-danger" />
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
-      <Modals show={show} handleClose={handleClose} data={data} />
     </>
   );
 };
