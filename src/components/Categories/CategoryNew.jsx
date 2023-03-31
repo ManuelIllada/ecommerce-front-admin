@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 const CategoryModif = () => {
   const notifySuccess = (message) =>
     toast.success(message, {
-      duration: 3000,
+      duration: 2000,
       position: "bottom-right",
     });
   const notifyError = (error) =>
