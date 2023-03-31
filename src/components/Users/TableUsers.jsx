@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 
 const TableUsers = () => {
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/users`);

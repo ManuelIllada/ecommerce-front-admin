@@ -2,10 +2,22 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { AiFillEdit } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TableCategories = () => {
+  const navigate = useNavigate();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/categories`);
+  const handleDelete = async (event, cat) => {
+    event.preventDefault();
+
+    const response = await fetch(`http://localhost:8000/categories/${cat.id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+    console.log(response);
+
+    navigate("/categories");
+  };
   return (
     <>
       <div className="row m-3">
@@ -33,7 +45,11 @@ const TableCategories = () => {
                   <Link to="/categories/edit" state={cat}>
                     <AiFillEdit className="text-primary" data={cat} />
                   </Link>
-                  <BsFillTrashFill className="text-danger" />
+
+                  <BsFillTrashFill
+                    className="text-danger"
+                    onClick={(event) => handleDelete(event, cat)}
+                  />
                 </td>
               </tr>
             ))}
