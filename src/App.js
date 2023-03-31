@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Panel />}>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="categories/create" element={<CategoryNew />} />
           <Route path="categories/edit" element={<CategoryModif />} />
+          <Route path="categories/create" element={<CategoryNew />} />
           <Route path="categories" element={<TableCategories />} />
           <Route path="products" element={<TableProducts />} />
           <Route path="users" element={<TableUsers />} />

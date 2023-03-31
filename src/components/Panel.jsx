@@ -1,7 +1,7 @@
 import React from "react";
 import "./Panel.css";
 import { FaUserAstronaut, FaUserSecret } from "react-icons/fa";
-import { AiFillDashboard, AiFillShopping } from "react-icons/ai";
+import { AiFillDashboard } from "react-icons/ai";
 import { MdCategory } from "react-icons/md";
 import { GiSkateboard } from "react-icons/gi";
 import { ImExit } from "react-icons/im";
