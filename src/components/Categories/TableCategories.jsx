@@ -7,13 +7,18 @@ import { Link, useNavigate } from "react-router-dom";
 const TableCategories = () => {
   const navigate = useNavigate();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/categories`);
+
   const handleDelete = async (event, cat) => {
     event.preventDefault();
+    console.log("handleDelete");
 
-    const response = await fetch(`http://localhost:8000/categories/${cat.id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    }).then((res) => res.json());
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/categories/${cat.id}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    ).then((res) => res.json());
     console.log(response);
 
     navigate("/categories");
@@ -45,11 +50,12 @@ const TableCategories = () => {
                   <Link to="/categories/edit" state={cat}>
                     <AiFillEdit className="text-primary" data={cat} />
                   </Link>
-
-                  <BsFillTrashFill
-                    className="text-danger"
-                    onClick={(event) => handleDelete(event, cat)}
-                  />
+                  <Link>
+                    <BsFillTrashFill
+                      className="text-danger"
+                      onClick={(event) => handleDelete(event, cat)}
+                    />
+                  </Link>
                 </td>
               </tr>
             ))}

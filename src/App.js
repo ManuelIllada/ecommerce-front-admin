@@ -8,10 +8,12 @@ import CategoryNew from "./components/Categories/CategoryNew";
 import "./App.css";
 import Panel from "./components/Panel";
 import Dashboard from "./components/Dashboard/Dashboard";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Panel />}>
           <Route path="dashboard" element={<Dashboard />} />
