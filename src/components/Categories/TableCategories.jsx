@@ -24,8 +24,9 @@ const TableCategories = () => {
       position: "bottom-right",
     });
 
-  const [categoriesList, setCategoriesList] = useState(null);
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/categories`);
+  const [categoriesList, setCategoriesList] = useState(null);
+
   useEffect(() => {
     setCategoriesList(data);
   }, [data]);
