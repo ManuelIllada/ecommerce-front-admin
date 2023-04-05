@@ -29,16 +29,19 @@ const ProductNew = () => {
   const [stock, setStock] = useState("");
   const [featured, setFeatured] = useState("");
   const [category, setCategory] = useState("");
+
   const handleNewProduct = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("media", media);
     formData.append("price", price);
     formData.append("stock", stock);
     formData.append("featured", featured);
     formData.append("category", category);
+    for (let index = 0; index < media.length; index++) {
+      formData.append("media", media[index]);
+    }
     const response = await axios({
       url: "http://localhost:8000/products",
       method: "POST",
@@ -86,8 +89,12 @@ const ProductNew = () => {
           </label>
           <input
             type="file"
+            name="media"
             className="form-control"
-            onChange={(event) => setMedia(event.target.files)}
+            onChange={(event) => {
+              console.log(event.target);
+              setMedia(event.target.files);
+            }}
             multiple
           />
         </div>
