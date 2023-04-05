@@ -25,12 +25,14 @@ const TableProducts = () => {
         </thead>
         <tbody>
           {data &&
-            data.map((cat) => (
-              <tr key={cat.id} className="text-center">
-                <td>{cat.id}</td>
-                <td>{cat.name}</td>
+            data.map((product) => (
+              <tr key={product.id} className="text-center">
+                <td>{product.id}</td>
+                <td>{product.name}</td>
                 <td className="d-flex justify-content-around align-items-center">
-                  <AiFillEdit className="text-primary" />
+                  <Link to="/products/edit" state={product}>
+                    <AiFillEdit className="text-primary" />
+                  </Link>
                   <BsFillTrashFill className="text-danger" />
                 </td>
               </tr>

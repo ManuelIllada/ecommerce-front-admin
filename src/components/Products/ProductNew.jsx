@@ -1,8 +1,21 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
-
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const ProductNew = () => {
+  const notifySuccess = (message) =>
+    toast.success(message, {
+      duration: 2000,
+      position: "bottom-right",
+    });
+  const notifyError = (error) =>
+    toast.error(error, {
+      duration: 3000,
+      position: "bottom-right",
+    });
+  const navigate = useNavigate();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/categories`);
   const [categoriesList, setCategoriesList] = useState(null);
 
@@ -12,13 +25,37 @@ const ProductNew = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState([]);
-  const [price, setPrice] = useState(null);
-  const [stock, setStock] = useState(null);
-  const [featured, setFeatured] = useState(null);
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [featured, setFeatured] = useState("");
   const [category, setCategory] = useState("");
+  const handleNewProduct = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("media", media);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("featured", featured);
+    formData.append("category", category);
+    const response = await axios({
+      url: "http://localhost:8000/products",
+      method: "POST",
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    response.data.message
+      ? notifySuccess(response.data.message)
+      : notifyError(response.data.error);
+
+    navigate(-1);
+  };
   return (
     <div className="container">
-      <form>
+      <form method="POST" onSubmit={handleNewProduct}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Name
@@ -27,6 +64,7 @@ const ProductNew = () => {
             type="text"
             className="form-control"
             name={name}
+            value={name}
             onChange={(event) => setName(event.target.value)}
           />
         </div>
@@ -38,6 +76,7 @@ const ProductNew = () => {
             className="form-control"
             rows="3"
             name={description}
+            value={description}
             onChange={(event) => setDescription(event.target.value)}
           ></textarea>
         </div>
@@ -48,8 +87,8 @@ const ProductNew = () => {
           <input
             type="file"
             className="form-control"
-            value={media}
             onChange={(event) => setMedia(event.target.files)}
+            multiple
           />
         </div>
         <div className="mb-3">
@@ -60,6 +99,7 @@ const ProductNew = () => {
             type="text"
             className="form-control"
             value={price}
+            name={price}
             onChange={(event) => setPrice(event.target.value)}
           />
         </div>
@@ -72,6 +112,7 @@ const ProductNew = () => {
             className="form-control"
             min={1}
             value={stock}
+            name={stock}
             onChange={(event) => setStock(event.target.value)}
           />
         </div>
@@ -109,17 +150,18 @@ const ProductNew = () => {
           <label className="form-label" htmlFor="Category">
             Category
           </label>
-          <select className="form-select" aria-label="Default select example">
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            onChange={(event) => setCategory(event.target.value)}
+            value={category}
+          >
             <option value="none" selected>
               Open this select menu
             </option>
             {categoriesList &&
               categoriesList.map((category) => (
-                <option
-                  value={category.name}
-                  key={category.id}
-                  onChange={(event) => setCategory(event.target.value)}
-                >
+                <option value={category.id} key={category.id}>
                   {category.name}
                 </option>
               ))}
