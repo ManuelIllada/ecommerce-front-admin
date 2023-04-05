@@ -9,6 +9,7 @@ import "./App.css";
 import Panel from "./components/Panel";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { Toaster } from "react-hot-toast";
+import ProductNew from "./components/Products/ProductNew";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="categories/edit" element={<CategoryModif />} />
           <Route path="categories/create" element={<CategoryNew />} />
           <Route path="categories" element={<TableCategories />} />
+          <Route path="products/create" element={<ProductNew />} />
           <Route path="products" element={<TableProducts />} />
           <Route path="users" element={<TableUsers />} />
         </Route>

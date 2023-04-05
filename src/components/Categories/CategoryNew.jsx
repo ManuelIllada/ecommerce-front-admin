@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
-const CategoryModif = () => {
+const CategoryNew = () => {
   const notifySuccess = (message) =>
     toast.success(message, {
       duration: 2000,
@@ -14,33 +15,62 @@ const CategoryModif = () => {
       position: "bottom-right",
     });
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
+  const [name, setName] = useState("");
+  const [media, setMedia] = useState("");
+  const [cardImage, setCardImage] = useState("");
 
-  const handleSendModify = async (event) => {
+  const handleNewCategory = async (event) => {
     event.preventDefault();
-    const response = await fetch(`http://localhost:8000/categories/`, {
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("media", media);
+    formData.append("cardImage", cardImage);
+    const response = await axios({
+      url: "http://localhost:8000/categories",
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: inputValue }),
-    }).then((response) => response.json());
-
-    response.message
-      ? notifySuccess(response.message)
-      : notifyError(response.error);
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    response.data.message
+      ? notifySuccess(response.data.message)
+      : notifyError(response.data.error);
 
     navigate(-1);
   };
   return (
     <div className="container">
-      <h3>Ingrese nuevo nombre de Categoria</h3>
-      <form onSubmit={handleSendModify}>
+      <h3>Ingrese Datos para una nueva Categoria</h3>
+      <form onSubmit={handleNewCategory}>
         <div className="mb-3">
+          <label htmlFor="name">Name</label>
           <input
             className="form-control w-25"
             name="categoryName"
             type="text"
-            value={inputValue}
-            onChange={(event) => setInputValue(event.target.value)}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="name">Media</label>
+          <input
+            type="file"
+            className="form-control "
+            name="media"
+            id="media"
+            onChange={(event) => setMedia(event.target.files[0])}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="cardImage">Card Image</label>
+          <input
+            type="file"
+            className="form-control "
+            name="cardImage"
+            id="cardImage"
+            onChange={(event) => setCardImage(event.target.files[0])}
           />
         </div>
         <button className="btn btn-primary" type="submit">
@@ -51,4 +81,4 @@ const CategoryModif = () => {
   );
 };
 
-export default CategoryModif;
+export default CategoryNew;
