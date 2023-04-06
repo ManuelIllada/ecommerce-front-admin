@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
-
+import Loading from "../Loading/Loading";
 const TableUsers = () => {
   const notifySuccess = (message) =>
     toast.success(message, {
@@ -24,7 +24,7 @@ const TableUsers = () => {
       position: "bottom-right",
     });
 
-  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/users`);
+  const { data, loading } = useFetch(`${process.env.REACT_APP_API_URL}/users`);
   const [usersList, setUsersList] = useState(null);
 
   useEffect(() => {
@@ -61,6 +61,7 @@ const TableUsers = () => {
           </Link>
         </div>
       </div>
+      {loading && <Loading />}
       <table className="table ">
         <thead>
           <tr className="text-center">

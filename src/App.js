@@ -1,26 +1,35 @@
+import React from "react";
+import "./App.css";
+import { Toaster } from "react-hot-toast";
 import { Routes, Route } from "react-router-dom";
 import TableCategories from "./components/Categories/TableCategories";
 import TableProducts from "./components/Products/TableProducts";
 import TableUsers from "./components/Users/TableUsers";
 import CategoryModif from "./components/Categories/CategoryModif";
 import CategoryNew from "./components/Categories/CategoryNew";
-
-import "./App.css";
 import Panel from "./components/Panel";
 import Dashboard from "./components/Dashboard/Dashboard";
-import { Toaster } from "react-hot-toast";
 import ProductNew from "./components/Products/ProductNew";
 import ProductsModify from "./components/Products/ProductsModify";
-
 import UsersNew from "./components/Users/UsersNew";
 import UsersModify from "./components/Users/UsersModify";
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
     <>
       <Toaster />
       <Routes>
-        <Route path="/" element={<Panel />}>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoutes>
+              <Panel />
+            </ProtectedRoutes>
+          }
+        >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="categories/edit" element={<CategoryModif />} />
           <Route path="categories/create" element={<CategoryNew />} />
