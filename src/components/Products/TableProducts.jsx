@@ -9,26 +9,31 @@ const TableProducts = () => {
   return (
     <>
       <div className="row m-3">
-        <div className="col-12 d-flex justify-content-end">
+        <div className="col-12 d-flex justify-content-between align-items-center">
+          <label htmlFor="title" className="shadown">
+            Product
+          </label>
           <Link to="/products/create">
-            <button className="btn btn-warning text-white">New</button>
+            <button className="btn btn-warning text-white">Add Product</button>
           </Link>
         </div>
       </div>
       <table className="table">
         <thead>
-          <tr className="text-center">
-            <th scope="col">#</th>
+          <tr>
             <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
           {data &&
             data.map((product) => (
-              <tr key={product.id} className="text-center">
-                <td>{product.id}</td>
+              <tr key={product.id}>
                 <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.stock}</td>
                 <td className="d-flex justify-content-around align-items-center">
                   <Link to="/products/edit" state={product}>
                     <AiFillEdit className="text-primary" />

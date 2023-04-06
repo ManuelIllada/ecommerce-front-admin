@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 const ProductNew = () => {
   const notifySuccess = (message) =>
     toast.success(message, {
@@ -92,7 +92,6 @@ const ProductNew = () => {
             name="media"
             className="form-control"
             onChange={(event) => {
-              console.log(event.target);
               setMedia(event.target.files);
             }}
             multiple
@@ -161,7 +160,6 @@ const ProductNew = () => {
             className="form-select"
             aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
-            value={category}
           >
             <option value="none" selected>
               Open this select menu
