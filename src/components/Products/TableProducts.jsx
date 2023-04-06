@@ -1,11 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
 
 const TableProducts = () => {
+  const notifySuccess = (message) =>
+    toast.success(message, {
+      duration: 2000,
+      position: "bottom-right",
+    });
+  const notifyError = (error) =>
+    toast.error(error, {
+      duration: 2000,
+      position: "bottom-right",
+    });
+
+  const notifyisDenied = ({ message }) =>
+    toast(message, {
+      duration: 2000,
+      position: "bottom-right",
+    });
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/products`);
+  const [productList, setProductList] = useState(null);
+
+  useEffect(() => {
+    setProductList(data);
+  }, [data]);
+
+  const handleDelete = async (event, product) => {
+    event.preventDefault();
+
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/products/${product.id}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    ).then((res) => res.json());
+    if (response.message) {
+      notifySuccess(response.message);
+      setProductList(productList.filter((p) => p.id !== product.id));
+    } else {
+      notifyError(response.error);
+    }
+  };
+
   return (
     <>
       <div className="row m-3">
@@ -28,8 +70,8 @@ const TableProducts = () => {
           </tr>
         </thead>
         <tbody>
-          {data &&
-            data.map((product) => (
+          {productList &&
+            productList.map((product) => (
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
@@ -38,7 +80,29 @@ const TableProducts = () => {
                   <Link to="/products/edit" state={product}>
                     <AiFillEdit className="text-primary" />
                   </Link>
-                  <BsFillTrashFill className="text-danger" />
+                  <Link>
+                    <BsFillTrashFill
+                      className="text-danger"
+                      onClick={(event) =>
+                        Swal.fire({
+                          text: "Esta seguro que desea eliminar esta categoria?",
+                          icon: "error",
+                          showDenyButton: true,
+                          denyButtonText: "No",
+                          confirmButtonText: "Si",
+                        }).then((response) => {
+                          if (response.isDenied) {
+                            notifyisDenied({
+                              message: "ℹ️ Accion negada por el usuario",
+                              type: "",
+                            });
+                          } else {
+                            handleDelete(event, product);
+                          }
+                        })
+                      }
+                    />
+                  </Link>
                 </td>
               </tr>
             ))}
