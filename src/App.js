@@ -12,6 +12,9 @@ import { Toaster } from "react-hot-toast";
 import ProductNew from "./components/Products/ProductNew";
 import ProductsModify from "./components/Products/ProductsModify";
 
+import UsersNew from "./components/Users/UsersNew";
+import UsersModify from "./components/Users/UsersModify";
+
 function App() {
   return (
     <>
@@ -25,6 +28,8 @@ function App() {
           <Route path="products/create" element={<ProductNew />} />
           <Route path="products/edit" element={<ProductsModify />} />
           <Route path="products" element={<TableProducts />} />
+          <Route path="users/create" element={<UsersNew />} />
+          <Route path="users/edit" element={<UsersModify />} />
           <Route path="users" element={<TableUsers />} />
         </Route>
       </Routes>
