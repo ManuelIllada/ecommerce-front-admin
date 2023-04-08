@@ -9,7 +9,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, actions) => {
-      return state;
+      return { ...state, ...actions.payload };
     },
   },
 });

@@ -1,18 +1,36 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUser } from "../../redux/UserSlice";
 
 const Login = () => {
+  const notifyError = (error) =>
+    toast.error(error, {
+      duration: 2000,
+      position: "bottom-right",
+    });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data } = fetch(`${process.env.REACT_APP_API_URL}/login`, {
-      method: "POST",
-      body: { email, password },
-    });
-    console.log("login...");
-    console.log("email: ", email);
-    console.log("password: ", password);
-    console.log("data: ", data);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/panel/login`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    ).then((res) => res.json());
+    console.log(response);
+    if (response.error) {
+      return notifyError(response.error);
+    } else {
+      dispatch(setUser(response));
+    }
+    navigate("/");
   };
   return (
     <section className="vh-100">
