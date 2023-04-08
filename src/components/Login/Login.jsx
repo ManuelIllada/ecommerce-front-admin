@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { data } = fetch(`${process.env.REACT_APP_API_URL}/login`, {
+      method: "POST",
+      body: { email, password },
+    });
+    console.log("login...");
+    console.log("email: ", email);
+    console.log("password: ", password);
+    console.log("data: ", data);
+  };
   return (
     <section className="vh-100">
       <div className="container-fluid h-custom">
@@ -13,15 +26,17 @@ const Login = () => {
             />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-outline mb-4">
                 <input
                   type="email"
-                  id="form3Example3"
+                  name="email"
                   className="form-control form-control-lg"
                   placeholder="Enter a valid email address"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                 />
-                <label className="form-label" for="form3Example3">
+                <label className="form-label" htmlFor="email">
                   Email address
                 </label>
               </div>
@@ -29,21 +44,19 @@ const Login = () => {
               <div className="form-outline mb-3">
                 <input
                   type="password"
-                  id="form3Example4"
+                  name="password"
                   className="form-control form-control-lg"
                   placeholder="Enter password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                 />
-                <label className="form-label" for="form3Example4">
+                <label className="form-label" htmlFor="password">
                   Password
                 </label>
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-lg"
-                  style={{ PaddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                >
+                <button type="submit" className="btn btn-primary">
                   Login
                 </button>
               </div>
