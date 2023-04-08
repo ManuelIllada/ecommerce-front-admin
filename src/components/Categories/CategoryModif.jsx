@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
+//import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const CategoryModif = () => {
@@ -14,14 +14,11 @@ const CategoryModif = () => {
         position: "bottom-right",
       }); */
     event.preventDefault();
-    const response = await fetch(
-      `http://localhost:8000/categories/${location.state.id}`,
-      {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: location.state.id, name: inputValue }),
-      }
-    ).then((response) => response.json());
+    await fetch(`http://localhost:8000/categories/${location.state.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: location.state.id, name: inputValue }),
+    }).then((response) => response.json());
     navigate(-1);
   };
   return (
