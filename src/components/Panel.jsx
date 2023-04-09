@@ -6,8 +6,18 @@ import { MdCategory } from "react-icons/md";
 import { GiSkateboard } from "react-icons/gi";
 import { ImExit } from "react-icons/im";
 import { CgMenuLeft } from "react-icons/cg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeToken } from "../redux/UserSlice";
+
 const Panel = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userStore = useSelector((state) => state.user);
+  const handleLogout = () => {
+    dispatch(removeToken());
+    navigate("/login");
+  };
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -55,7 +65,10 @@ const Panel = () => {
               </i>
               Users
             </Link>
-            <Link className="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+            <Link
+              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+              onClick={handleLogout}
+            >
               <i className="me-2">
                 <ImExit />
               </i>
@@ -97,7 +110,8 @@ const Panel = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <i className="fas fa-user me-2"></i>John Doe
+                    <i className="fas fa-user me-2"></i>
+                    {userStore.email}
                   </Link>
                   <ul
                     className="dropdown-menu"
@@ -109,7 +123,11 @@ const Panel = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLogout}
+                      >
                         Logout
                       </Link>
                     </li>
