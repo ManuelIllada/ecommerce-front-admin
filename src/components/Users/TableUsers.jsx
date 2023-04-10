@@ -74,14 +74,21 @@ const TableUsers = () => {
           {usersList &&
             usersList.map((user) => (
               <tr key={user.id} className="text-center">
+                {console.log(user.avatar)}
                 <td>{user.id}</td>
                 <td>
-                  <img
-                    src={user.avatar}
-                    className="img-fluid rounded-circle"
-                    alt="avatar"
-                    style={{ width: "50px", height: "50px" }}
-                  />
+                  {
+                    <img
+                      src={
+                        user.avatar.includes("https://")
+                          ? user.avatar
+                          : `http://localhost:8000/img/${user.avatar}`
+                      }
+                      className="img-fluid rounded-circle"
+                      alt="avatar"
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  }
                 </td>
                 <td>
                   {user.firstname} - {user.lastname}
