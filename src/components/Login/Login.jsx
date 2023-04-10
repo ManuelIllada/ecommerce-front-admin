@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { setUser } from "../../redux/UserSlice";
 import "./Login.css";
 const Login = () => {
+  const notifySuccess = (email) =>
+    toast.success("Bienvenido: " + email, {
+      duration: 2000,
+      position: "bottom-right",
+    });
   const notifyError = (error) =>
     toast.error(error, {
       duration: 2000,
@@ -24,10 +29,11 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       }
     ).then((res) => res.json());
-    console.log(response);
+    console.log(response.email);
     if (response.error) {
       return notifyError(response.error);
     } else {
+      notifySuccess(response.email);
       dispatch(setUser(response));
     }
     navigate("/");
@@ -35,7 +41,7 @@ const Login = () => {
   return (
     <section className="vh-100">
       <div className="container-fluid h-custom">
-        <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="row d-flex justify-content-center align-items-center mt-5">
           <div className="col-md-9 col-lg-6 col-xl-5">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"

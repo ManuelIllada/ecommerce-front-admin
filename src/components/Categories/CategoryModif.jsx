@@ -14,11 +14,14 @@ const CategoryModif = () => {
         position: "bottom-right",
       }); */
     event.preventDefault();
-    await fetch(`http://localhost:8000/categories/${location.state.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: location.state.id, name: inputValue }),
-    }).then((response) => response.json());
+    await fetch(
+      `${process.env.REACT_APP_API_URL}/categories/${location.state.id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: location.state.id, name: inputValue }),
+      }
+    ).then((response) => response.json());
     navigate(-1);
   };
   return (
