@@ -53,13 +53,14 @@ const TableCategories = () => {
   return (
     <>
       <div className="row m-3">
-        <div className="col-12 d-flex justify-content-end">
+        <div className="col-12 d-flex justify-content-between align-items-center">
+          <h3>Categorias</h3>
           <Link to="/categories/create">
             <button className="btn btn-warning text-white">New</button>
           </Link>
         </div>
       </div>
-      <table className="table">
+      <table className="table text-white">
         <thead>
           <tr className="text-center">
             <th scope="col">#</th>
@@ -82,7 +83,8 @@ const TableCategories = () => {
                       className="text-danger"
                       onClick={(event) =>
                         Swal.fire({
-                          text: "Esta seguro que desea eliminar esta categoria?",
+                          text:
+                            "Esta seguro que desea eliminar esta categoria?",
                           icon: "error",
                           showDenyButton: true,
                           denyButtonText: "No",

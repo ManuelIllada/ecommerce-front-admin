@@ -1,24 +1,12 @@
 :root {
-  --main-bg-color: #009d63;
-  --main-text-color: #009d63;
-  --second-text-color: #bbbec5;
-  --second-bg-color: #c1efde;
-}
+  --main-bg-color: #27293d;
+  --main-text-color: ##f8f5f9;
 
-.primary-text {
-  color: var(--main-text-color);
+  --second-bg-color: ##f8f5f9;
 }
-
-.second-text {
-  color: var(--second-text-color);
-}
-
-.primary-bg {
-  background-color: var(--main-bg-color);
-}
-
-.secondary-bg {
-  background-color: var(--second-bg-color);
+body {
+  color: #f8f5f9;
+  background-color: #27293d;
 }
 
 .rounded-full {
@@ -27,14 +15,6 @@
 
 #wrapper {
   overflow-x: hidden;
-  background-image: linear-gradient(
-    to right,
-    #baf3d7,
-    #c2f5de,
-    #cbf7e4,
-    #d4f8ea,
-    #ddfaef
-  );
 }
 
 #sidebar-wrapper {
@@ -70,13 +50,6 @@
 .list-group-item {
   border: none;
   padding: 20px 30px;
-}
-
-.list-group-item.active {
-  background-color: transparent;
-  color: var(--main-text-color);
-  font-weight: bold;
-  border: none;
 }
 
 @media (min-width: 768px) {

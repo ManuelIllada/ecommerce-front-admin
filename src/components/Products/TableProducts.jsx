@@ -52,15 +52,13 @@ const TableProducts = () => {
     <>
       <div className="row m-3">
         <div className="col-12 d-flex justify-content-between align-items-center">
-          <label htmlFor="title" className="shadown">
-            Product
-          </label>
+          <h3>Productos</h3>
           <Link to="/products/create">
-            <button className="btn btn-warning text-white">Add Product</button>
+            <button className="btn btn-warning text-white">New</button>
           </Link>
         </div>
       </div>
-      <table className="table">
+      <table className="table text-white">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -85,7 +83,8 @@ const TableProducts = () => {
                       className="text-danger"
                       onClick={(event) =>
                         Swal.fire({
-                          text: "Esta seguro que desea eliminar esta categoria?",
+                          text:
+                            "Esta seguro que desea eliminar esta categoria?",
                           icon: "error",
                           showDenyButton: true,
                           denyButtonText: "No",

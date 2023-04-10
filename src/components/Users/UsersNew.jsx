@@ -51,6 +51,7 @@ const UsersNew = () => {
   };
   return (
     <div className="container">
+      <h3>Ingrese Datos para un nuevo Usuario</h3>
       <form method="POST" onSubmit={handleNewUser}>
         <div className="d-flex justify-content-around text-center">
           <div className="mb-3 d-flex align-items-center ">
@@ -70,66 +71,56 @@ const UsersNew = () => {
             />
           </div>
         </div>
-
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Email"
-            onChange={(event) => setEmail(event.target.value)}
-          />
+        <div className="d-flex justify-content-around text-center">
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Address"
+              onChange={(event) => setAddress(event.target.value)}
+            />
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Address
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Address"
-            onChange={(event) => setAddress(event.target.value)}
-          />
+        <div className="d-flex justify-content-around text-center">
+          <div className="mb-3">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Phone"
+              onChange={(event) => setPhone(event.target.value)}
+            />
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
+        <div className="d-flex justify-content-around text-center">
+          <div className="mb-3 ">
+            <input
+              type="file"
+              name="avatar"
+              className="form-control "
+              placeholder="Avatar"
+              onChange={(event) => setAvatar(event.target.files[0])}
+            />
+            <button type="submit" className="btn btn-primary mt-4">
+              Submit
+            </button>
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Phone
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Phone"
-            onChange={(event) => setPhone(event.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="Avatar" className="form-label">
-            Media
-          </label>
-          <input
-            type="file"
-            name="avatar"
-            className="form-control"
-            onChange={(event) => setAvatar(event.target.files[0])}
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
       </form>
     </div>
   );

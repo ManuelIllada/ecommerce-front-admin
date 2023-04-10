@@ -30,7 +30,7 @@ function App() {
             </ProtectedRoutes>
           }
         >
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="categories/edit" element={<CategoryModif />} />
           <Route path="categories/create" element={<CategoryNew />} />
           <Route path="categories" element={<TableCategories />} />

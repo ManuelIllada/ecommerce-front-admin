@@ -26,13 +26,14 @@ const CategoryNew = () => {
     formData.append("media", media);
     formData.append("cardImage", cardImage);
     const response = await axios({
-      url: "http://localhost:8000/categories",
+      url: `${process.env.REACT_APP_API_URL}/categories`,
       method: "POST",
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log(response.data);
     response.data.message
       ? notifySuccess(response.data.message)
       : notifyError(response.data.error);

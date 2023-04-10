@@ -5,7 +5,6 @@ import { AiFillDashboard } from "react-icons/ai";
 import { MdCategory } from "react-icons/md";
 import { GiSkateboard } from "react-icons/gi";
 import { ImExit } from "react-icons/im";
-import { CgMenuLeft } from "react-icons/cg";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../redux/UserSlice";
@@ -22,7 +21,7 @@ const Panel = () => {
     <>
       <div className="d-flex" id="wrapper">
         <div className="bg-white" id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+          <div className="sidebar-heading text-center py-4  fs-4 fw-bold text-dark  text-uppercase border-bottom">
             <i className="me-2">
               <FaUserSecret />
             </i>
@@ -30,8 +29,8 @@ const Panel = () => {
           </div>
           <div className="list-group list-group-flush my-3">
             <Link
-              className="list-group-item list-group-item-action bg-transparent second-text active"
-              to={"/dashboard"}
+              className="list-group-item list-group-item-action bg-transparent fw-bold"
+              to={"/"}
             >
               <i className="me-2">
                 <AiFillDashboard />
@@ -39,7 +38,7 @@ const Panel = () => {
               Dashboard
             </Link>
             <Link
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/categories"}
             >
               <i className="me-2">
@@ -48,7 +47,7 @@ const Panel = () => {
               Categories
             </Link>
             <Link
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/products"}
             >
               <i className="me-2">
@@ -57,7 +56,7 @@ const Panel = () => {
               Products
             </Link>
             <Link
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/users"}
             >
               <i className="me-2">
@@ -80,9 +79,7 @@ const Panel = () => {
         <div id="page-content-wrapper">
           <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
             <div className="d-flex align-items-center">
-              <i className="primary-text fs-4 me-3" id="menu-toggle">
-                <CgMenuLeft />
-              </i>
+              <i className="primary-text fs-4 me-3" id="menu-toggle"></i>
             </div>
 
             <button
@@ -104,14 +101,19 @@ const Panel = () => {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link dropdown-toggle second-text fw-bold"
+                    className="nav-link dropdown-toggle  fw-bold"
                     id="navbarDropdown"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     <i className="fas fa-user me-2"></i>
-                    {userStore.email}
+                    <img
+                      src={userStore.avatar}
+                      className="img-fluid rounded-circle"
+                      alt="avatar user"
+                      style={{ width: "50px", height: "50px" }}
+                    />
                   </Link>
                   <ul
                     className="dropdown-menu"

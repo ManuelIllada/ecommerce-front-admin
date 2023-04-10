@@ -5,17 +5,17 @@ const Dashboard = () => {
     <div className="container-fluid px-4">
       <div className="row g-3 my-2">
         <div className="col-md-3">
-          <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">720</h3>
               <p className="fs-5">Products</p>
             </div>
-            <i className="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+            <i className="fas fa-gift fs-1 border rounded-full  p-3"></i>
           </div>
         </div>
 
         <div className="col-md-3">
-          <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div className="p-3 bg-white shadow-sm text-dark d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">4920</h3>
               <p className="fs-5">Sales</p>
@@ -25,7 +25,7 @@ const Dashboard = () => {
         </div>
 
         <div className="col-md-3">
-          <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">3899</h3>
               <p className="fs-5">Delivery</p>
@@ -35,12 +35,12 @@ const Dashboard = () => {
         </div>
 
         <div className="col-md-3">
-          <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">%25</h3>
               <p className="fs-5">Increase</p>
             </div>
-            <i className="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+            <i className="fas fa-chart-line fs-1 border rounded-full  p-3"></i>
           </div>
         </div>
       </div>

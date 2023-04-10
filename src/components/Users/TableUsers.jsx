@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
-import Loading from "../Loading/Loading";
+
 const TableUsers = () => {
   const notifySuccess = (message) =>
     toast.success(message, {
@@ -24,7 +24,7 @@ const TableUsers = () => {
       position: "bottom-right",
     });
 
-  const { data, loading } = useFetch(`${process.env.REACT_APP_API_URL}/users`);
+  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/users`);
   const [usersList, setUsersList] = useState(null);
 
   useEffect(() => {
@@ -53,16 +53,14 @@ const TableUsers = () => {
     <>
       <div className="row m-3">
         <div className="col-12 d-flex justify-content-between align-items-center">
-          <label htmlFor="title" className="shadown">
-            Users
-          </label>
+          <h3>Usuarios</h3>
           <Link to="/users/create">
-            <button className="btn btn-warning text-white">Add User</button>
+            <button className="btn btn-warning text-white">New</button>
           </Link>
         </div>
       </div>
-      {loading && <Loading />}
-      <table className="table ">
+
+      <table className="table text-white">
         <thead>
           <tr className="text-center">
             <th scope="col">#</th>
@@ -98,7 +96,8 @@ const TableUsers = () => {
                       className="text-danger"
                       onClick={(event) =>
                         Swal.fire({
-                          text: "Esta seguro que desea eliminar esta categoria?",
+                          text:
+                            "Esta seguro que desea eliminar esta categoria?",
                           icon: "error",
                           showDenyButton: true,
                           denyButtonText: "No",

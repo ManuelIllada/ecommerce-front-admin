@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../redux/UserSlice";
-
+import "./Login.css";
 const Login = () => {
   const notifyError = (error) =>
     toast.error(error, {
