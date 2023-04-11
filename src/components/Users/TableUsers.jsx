@@ -74,7 +74,6 @@ const TableUsers = () => {
           {usersList &&
             usersList.map((user) => (
               <tr key={user.id} className="text-center">
-                {console.log(user.avatar)}
                 <td>{user.id}</td>
                 <td>
                   {

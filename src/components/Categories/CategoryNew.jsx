@@ -33,7 +33,7 @@ const CategoryNew = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response.data);
+
     response.data.message
       ? notifySuccess(response.data.message)
       : notifyError(response.data.error);

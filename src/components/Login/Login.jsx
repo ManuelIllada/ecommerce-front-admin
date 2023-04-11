@@ -29,7 +29,7 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       }
     ).then((res) => res.json());
-    console.log(response.email);
+
     if (response.error) {
       return notifyError(response.error);
     } else {
