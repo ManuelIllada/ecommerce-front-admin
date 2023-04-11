@@ -37,6 +37,7 @@ const Panel = () => {
               </i>
               Dashboard
             </Link>
+            <hr className="border-bottom  my-0 py-0" />
             <Link
               className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/categories"}
@@ -46,6 +47,7 @@ const Panel = () => {
               </i>
               Categories
             </Link>
+            <hr className="border-bottom  my-0 py-0" />
             <Link
               className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/products"}
@@ -55,6 +57,7 @@ const Panel = () => {
               </i>
               Products
             </Link>
+            <hr className="border-bottom  my-0 py-0" />
             <Link
               className="list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/users"}
@@ -64,6 +67,7 @@ const Panel = () => {
               </i>
               Users
             </Link>
+            <hr className="border-bottom  my-0 py-0" />
             <Link
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
               onClick={handleLogout}

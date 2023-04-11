@@ -49,7 +49,7 @@ body {
 
 .list-group-item {
   border: none;
-  padding: 20px 30px;
+  padding-left: 30px;
 }
 
 @media (min-width: 768px) {
