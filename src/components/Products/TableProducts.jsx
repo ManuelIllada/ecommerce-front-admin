@@ -50,63 +50,65 @@ const TableProducts = () => {
 
   return (
     <>
-      <div className="row m-3">
-        <div className="col-12 d-flex justify-content-between align-items-center">
-          <h3>Productos</h3>
-          <Link to="/products/create">
-            <button className="btn btn-warning text-white">New</button>
-          </Link>
+      <div className="container">
+        <div className="row m-3">
+          <div className="col-12 d-flex justify-content-between align-items-center">
+            <h3>Productos</h3>
+            <Link to="/products/create">
+              <button className="btn btn-warning ">New</button>
+            </Link>
+          </div>
         </div>
+        <table className="table border rounded">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productList &&
+              productList.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.name}</td>
+                  <td>{product.price}</td>
+                  <td>{product.stock}</td>
+                  <td className="d-flex justify-content-around align-items-center">
+                    <Link to="/products/edit" state={product}>
+                      <AiFillEdit className="text-primary" />
+                    </Link>
+                    <Link>
+                      <BsFillTrashFill
+                        className="text-danger"
+                        onClick={(event) =>
+                          Swal.fire({
+                            text:
+                              "Esta seguro que desea eliminar esta categoria?",
+                            icon: "error",
+                            showDenyButton: true,
+                            denyButtonText: "No",
+                            confirmButtonText: "Si",
+                          }).then((response) => {
+                            if (response.isDenied) {
+                              notifyisDenied({
+                                message: "ℹ️ Accion negada por el usuario",
+                                type: "",
+                              });
+                            } else {
+                              handleDelete(event, product);
+                            }
+                          })
+                        }
+                      />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
-      <table className="table text-white">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productList &&
-            productList.map((product) => (
-              <tr key={product.id}>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.stock}</td>
-                <td className="d-flex justify-content-around align-items-center">
-                  <Link to="/products/edit" state={product}>
-                    <AiFillEdit className="text-primary" />
-                  </Link>
-                  <Link>
-                    <BsFillTrashFill
-                      className="text-danger"
-                      onClick={(event) =>
-                        Swal.fire({
-                          text:
-                            "Esta seguro que desea eliminar esta categoria?",
-                          icon: "error",
-                          showDenyButton: true,
-                          denyButtonText: "No",
-                          confirmButtonText: "Si",
-                        }).then((response) => {
-                          if (response.isDenied) {
-                            notifyisDenied({
-                              message: "ℹ️ Accion negada por el usuario",
-                              type: "",
-                            });
-                          } else {
-                            handleDelete(event, product);
-                          }
-                        })
-                      }
-                    />
-                  </Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
     </>
   );
 };

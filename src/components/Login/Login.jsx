@@ -42,7 +42,7 @@ const Login = () => {
   };
   return (
     <section
-      className="d-flex justify-content-center justify-content-lg-end align-items-center overflow-y-auto px-5 vh-100 "
+      className="d-flex justify-content-center justify-content-lg-end align-items-center overflow-y-auto px-5 vh-100  "
       style={{
         backgroundImage:
           'url("https://images.unsplash.com/photo-1611350080263-727f9d7490df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80")',
@@ -50,31 +50,38 @@ const Login = () => {
         backgroundPosition: "center center",
       }}
     >
-      <div className=" d-lg-flex justify-content-around d-md-flex justify-content-around d-sm-flex justify-content-around  ">
-        <div className="col-12 col-sm-6 col-md-6 col-lg-6">
+      <div className=" d-lg-flex justify-content-around d-md-flex justify-content-around d-sm-flex justify-content-around  bg-dark bg-opacity-50 rounded shadow my-5 pt-0">
+        <div className="col-12 col-sm-6 col-md-6 col-lg-6 text-white text-center  ">
           <h1 className="my-5 display-3 fw-bold ls-tight px-3 text-white">
             Connen™ <br />
             <span>Admin Panel</span>
           </h1>
 
           <p
-            className="px-3 text-white"
+            className="d-col px-3 text-white"
             style={{ color: "hsl(217, 10%, 50.8%)" }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            itaque accusantium odio, soluta, corrupti aliquam quibusdam tempora
-            at cupiditate quis eum maiores libero veritatis? Dicta facilis sint
-            aliquid ipsum atque?
+            Our vision is to lead the way in sustainable transportation by
+            providing high-quality electric vehicles that are affordable,
+            reliable, and enjoyable to drive. We aim to revolutionize the
+            automotive industry by reducing our carbon footprint and promoting
+            environmental stewardship. We strive to empower our customers with
+            the freedom to choose cleaner, greener transportation options that
+            are better for the planet and for future generations. Our ultimate
+            goal is to create a world where electric vehicles are the norm, and
+            where everyone can enjoy the benefits of clean, efficient, and
+            sustainable transportation.
           </p>
         </div>
-        <div className="d-flex align-items-center justify-content-center col-12 col-sm-6 col-md-6 col-lg-4  mt-5  bg-light  bg-opacity-50  rounded shadow">
+        <div className="d-flex align-items-center justify-content-center col-12 col-sm-6 col-md-6 col-lg-4  mt-5   ">
           <form onSubmit={handleSubmit}>
             <FloatingLabel
               controlId="floatingInput"
               label="Email address"
-              className="mb-3 "
+              className="mb-3 text-dark"
             >
               <Form.Control
+                style={{ color: "darkblue" }}
                 type="email"
                 name="email"
                 className="form-control"
@@ -83,7 +90,11 @@ const Login = () => {
                 onChange={(event) => setEmail(event.target.value)}
               />
             </FloatingLabel>
-            <FloatingLabel controlId="floatingPassword" label="Password">
+            <FloatingLabel
+              controlId="floatingPassword"
+              className="text-dark"
+              label="Password"
+            >
               <Form.Control
                 type="password"
                 name="password"

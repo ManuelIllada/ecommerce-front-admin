@@ -52,61 +52,63 @@ const TableCategories = () => {
   };
   return (
     <>
-      <div className="row m-3">
-        <div className="col-12 d-flex justify-content-between align-items-center">
-          <h3>Categorias</h3>
-          <Link to="/categories/create">
-            <button className="btn btn-warning text-white">New</button>
-          </Link>
+      <div className="container">
+        <div className="row m-3">
+          <div className="col-12 d-flex justify-content-between align-items-center">
+            <h3>Categorias</h3>
+            <Link to="/categories/create">
+              <button className="btn btn-warning ">New</button>
+            </Link>
+          </div>
         </div>
+        <table className="table border ">
+          <thead>
+            <tr className="text-center">
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categoriesList &&
+              categoriesList.map((cat) => (
+                <tr key={cat.id} className="text-center">
+                  <th scope="row">{cat.id}</th>
+                  <td>{cat.name}</td>
+                  <td className="d-flex justify-content-around">
+                    <Link to="/categories/edit" state={cat}>
+                      <AiFillEdit className="text-primary" data={cat} />
+                    </Link>
+                    <Link>
+                      <BsFillTrashFill
+                        className="text-danger"
+                        onClick={(event) =>
+                          Swal.fire({
+                            text:
+                              "Esta seguro que desea eliminar esta categoria?",
+                            icon: "error",
+                            showDenyButton: true,
+                            denyButtonText: "No",
+                            confirmButtonText: "Si",
+                          }).then((response) => {
+                            if (response.isDenied) {
+                              notifyisDenied({
+                                message: "ℹ️ Accion negada por el usuario",
+                                type: "",
+                              });
+                            } else {
+                              handleDelete(event, cat);
+                            }
+                          })
+                        }
+                      />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
-      <table className="table text-white">
-        <thead>
-          <tr className="text-center">
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categoriesList &&
-            categoriesList.map((cat) => (
-              <tr key={cat.id} className="text-center">
-                <th scope="row">{cat.id}</th>
-                <td>{cat.name}</td>
-                <td className="d-flex justify-content-around">
-                  <Link to="/categories/edit" state={cat}>
-                    <AiFillEdit className="text-primary" data={cat} />
-                  </Link>
-                  <Link>
-                    <BsFillTrashFill
-                      className="text-danger"
-                      onClick={(event) =>
-                        Swal.fire({
-                          text:
-                            "Esta seguro que desea eliminar esta categoria?",
-                          icon: "error",
-                          showDenyButton: true,
-                          denyButtonText: "No",
-                          confirmButtonText: "Si",
-                        }).then((response) => {
-                          if (response.isDenied) {
-                            notifyisDenied({
-                              message: "ℹ️ Accion negada por el usuario",
-                              type: "",
-                            });
-                          } else {
-                            handleDelete(event, cat);
-                          }
-                        })
-                      }
-                    />
-                  </Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
     </>
   );
 };
