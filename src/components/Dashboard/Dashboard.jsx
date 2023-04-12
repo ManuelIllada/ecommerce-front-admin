@@ -3,8 +3,8 @@ import React from "react";
 const Dashboard = () => {
   return (
     <div className="container-fluid px-4">
-      <div className="row g-3 my-2">
-        <div className="col-md-3">
+      <div className="d-flex row g-3 my-2">
+        <div className="col-6 col-md-3">
           <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">720</h3>
@@ -14,7 +14,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="p-3 bg-white shadow-sm text-dark d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">4920</h3>
@@ -24,7 +24,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">3899</h3>
@@ -34,7 +34,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
               <h3 className="fs-2">%25</h3>

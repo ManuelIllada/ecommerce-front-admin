@@ -19,15 +19,15 @@ const Panel = () => {
   };
   return (
     <>
-      <div className="d-flex" style={{ position: "fixed" }}>
-        <div className="bg-white" id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4  fs-4 fw-bold text-dark  text-uppercase border-bottom">
+      <div className="">
+        <div className="bg-white">
+          <div className="text-center py-4  fs-4 fw-bold text-dark  text-uppercase border-bottom">
             <i className="me-2">
               <FaUserSecret />
             </i>
             Panel Admin
           </div>
-          <div className="list-group list-group-flush my-3">
+          <div className="d-flex  flex-sm-row list-group list-group-flush my-3">
             <Link
               className="list-group-item list-group-item-action bg-transparent fw-bold"
               to={"/"}
@@ -78,8 +78,19 @@ const Panel = () => {
               Logout
             </Link>
           </div>
+        </div>
+      </div>
+      <div className="col" id="page-content-wrapper">
+        <Outlet />
+      </div>
+    </>
+  );
+};
 
-          {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+export default Panel;
+
+{
+  /* <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item dropdown">
                 <Link
@@ -115,14 +126,5 @@ const Panel = () => {
                 </ul>
               </li>
             </ul>
-          </div> */}
-        </div>
-      </div>
-      <div className="col" id="page-content-wrapper">
-        <Outlet />
-      </div>
-    </>
-  );
-};
-
-export default Panel;
+          </div> */
+}
