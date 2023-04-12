@@ -19,15 +19,16 @@ const Panel = () => {
   };
   return (
     <>
-      <div className="">
-        <div className="bg-white">
-          <div className="text-center py-4  fs-4 fw-bold text-dark  text-uppercase border-bottom">
-            <i className="me-2">
-              <FaUserSecret />
-            </i>
-            Panel Admin
-          </div>
-          <div className="d-flex  flex-sm-row list-group list-group-flush my-3">
+      <div className="container">
+        <div className="text-center py-4  fs-4 fw-bold text-dark  text-uppercase ">
+          <i className="me-2">
+            <FaUserSecret />
+          </i>
+          Panel Admin
+        </div>
+        <hr className="border-bottom  my-0 py-0" />
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="flex-row list-group list-group-flush my-3">
             <Link
               className="list-group-item list-group-item-action bg-transparent fw-bold"
               to={"/"}
@@ -79,8 +80,10 @@ const Panel = () => {
             </Link>
           </div>
         </div>
+        <hr className="border-bottom  my-0 py-0" />
       </div>
-      <div className="col" id="page-content-wrapper">
+
+      <div className="container" id="page-content-wrapper">
         <Outlet />
       </div>
     </>

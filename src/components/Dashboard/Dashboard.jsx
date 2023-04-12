@@ -2,8 +2,8 @@ import React from "react";
 
 const Dashboard = () => {
   return (
-    <div className="container-fluid px-4">
-      <div className="d-flex row g-3 my-2">
+    <div>
+      <div className="d-flex justify-content-center g-3 my-2">
         <div className="col-6 col-md-3">
           <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
@@ -47,8 +47,8 @@ const Dashboard = () => {
 
       <div className="row my-5">
         <h3 className="fs-4 mb-3">Recent Orders</h3>
-        <div className="col">
-          <table className="table bg-white rounded shadow-sm  table-hover">
+        <div className="col border rounded shadow bg-opacity-75">
+          <table className="table bg-white  ">
             <thead>
               <tr>
                 <th scope="col" width="50">

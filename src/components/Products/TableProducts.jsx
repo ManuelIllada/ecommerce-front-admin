@@ -59,55 +59,57 @@ const TableProducts = () => {
             </Link>
           </div>
         </div>
-        <table className="table border rounded">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productList &&
-              productList.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.stock}</td>
-                  <td className="d-flex justify-content-around align-items-center">
-                    <Link to="/products/edit" state={product}>
-                      <AiFillEdit className="text-primary" />
-                    </Link>
-                    <Link>
-                      <BsFillTrashFill
-                        className="text-danger"
-                        onClick={(event) =>
-                          Swal.fire({
-                            text:
-                              "Esta seguro que desea eliminar esta categoria?",
-                            icon: "error",
-                            showDenyButton: true,
-                            denyButtonText: "No",
-                            confirmButtonText: "Si",
-                          }).then((response) => {
-                            if (response.isDenied) {
-                              notifyisDenied({
-                                message: "ℹ️ Accion negada por el usuario",
-                                type: "",
-                              });
-                            } else {
-                              handleDelete(event, product);
-                            }
-                          })
-                        }
-                      />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        <div className="col border rounded shadow bg-opacity-75">
+          <table className="table border rounded">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productList &&
+                productList.map((product) => (
+                  <tr key={product.id}>
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.stock}</td>
+                    <td className="d-flex justify-content-around align-items-center">
+                      <Link to="/products/edit" state={product}>
+                        <AiFillEdit className="text-primary" />
+                      </Link>
+                      <Link>
+                        <BsFillTrashFill
+                          className="text-danger"
+                          onClick={(event) =>
+                            Swal.fire({
+                              text:
+                                "Esta seguro que desea eliminar esta categoria?",
+                              icon: "error",
+                              showDenyButton: true,
+                              denyButtonText: "No",
+                              confirmButtonText: "Si",
+                            }).then((response) => {
+                              if (response.isDenied) {
+                                notifyisDenied({
+                                  message: "ℹ️ Accion negada por el usuario",
+                                  type: "",
+                                });
+                              } else {
+                                handleDelete(event, product);
+                              }
+                            })
+                          }
+                        />
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

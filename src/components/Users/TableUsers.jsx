@@ -60,7 +60,7 @@ const TableUsers = () => {
             </Link>
           </div>
         </div>
-        <div className="table-responsive">
+        <div className="col border rounded shadow bg-opacity-75">
           <table className="table border rounded ">
             <thead>
               <tr className="text-center">
