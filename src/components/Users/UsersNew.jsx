@@ -51,7 +51,7 @@ const UsersNew = () => {
   };
   return (
     <div className="container">
-      <h3>Ingrese Datos para un nuevo Usuario</h3>
+      <h3 className="my-3 text-center">Enter Data for a new User</h3>
       <form method="POST" onSubmit={handleNewUser}>
         <div className="d-flex justify-content-around text-center">
           <div className="mb-3 d-flex align-items-center ">

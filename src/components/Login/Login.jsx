@@ -42,7 +42,7 @@ const Login = () => {
   };
   return (
     <section
-      className="d-flex justify-content-center justify-content-lg-end align-items-center overflow-y-auto px-5 vh-100  "
+      className=" overflow-y-auto  vh-100  "
       style={{
         backgroundImage:
           'url("https://images.unsplash.com/photo-1611350080263-727f9d7490df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80")',
@@ -50,15 +50,15 @@ const Login = () => {
         backgroundPosition: "center center",
       }}
     >
-      <div className=" d-lg-flex justify-content-around d-md-flex justify-content-around d-sm-flex justify-content-around  bg-dark bg-opacity-50 rounded shadow my-5 pt-0">
-        <div className="col-12 col-sm-6 col-md-6 col-lg-6 text-white text-center  ">
+      <div className=" d-lg-flex justify-content-around d-md-flex justify-content-around d-sm-flex justify-content-around  bg-dark bg-opacity-50 rounded shadow m-5 pt-0">
+        <div className="col-12 col-sm-6 col-md-6 col-lg-6 text-white text-center">
           <h1 className="my-5 display-3 fw-bold ls-tight px-3 text-white">
             Connen™ <br />
             <span>Admin Panel</span>
           </h1>
 
           <p
-            className="d-col px-3 text-white"
+            className="d-none d-lg-block px-3 text-white"
             style={{ color: "hsl(217, 10%, 50.8%)" }}
           >
             Our vision is to lead the way in sustainable transportation by
@@ -106,8 +106,8 @@ const Login = () => {
             </FloatingLabel>
             <hr />
             <div className="text-center text-lg-start mt-4 mb-0 d-flex justify-content-center">
-              <button type="submit" className="btn btn-dark">
-                Login As Admin
+              <button type="submit" className="btn btn-dark mb-4">
+                Login
               </button>
             </div>
           </form>

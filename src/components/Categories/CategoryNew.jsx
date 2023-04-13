@@ -42,9 +42,9 @@ const CategoryNew = () => {
   };
   return (
     <div className="container">
-      <h3>Ingrese Datos para una nueva Categoria</h3>
+      <h3 className="my-3 text-center">Enter Data for a new Category</h3>
       <form onSubmit={handleNewCategory}>
-        <div className="mb-3">
+        <div className="my-3">
           <label htmlFor="name">Name</label>
           <input
             className="form-control w-25"

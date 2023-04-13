@@ -58,8 +58,8 @@ const ProductNew = () => {
     navigate(-1);
   };
   return (
-    <div className="container">
-      <h3>Ingrese Datos para una nuevo Producto</h3>
+    <div className="container mx-5">
+      <h3 className="my-3 text-center">Enter Data for a new Product</h3>
       <form method="POST" onSubmit={handleNewProduct}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

@@ -63,6 +63,7 @@ const TableProducts = () => {
           <table className="table border rounded">
             <thead>
               <tr>
+                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Stock</th>
@@ -73,6 +74,9 @@ const TableProducts = () => {
               {productList &&
                 productList.map((product) => (
                   <tr key={product.id}>
+                    <strong>
+                      <td>{product.id}</td>
+                    </strong>
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.stock}</td>
