@@ -2,8 +2,8 @@ import React from "react";
 
 const Dashboard = () => {
   return (
-    <div>
-      <div className="d-flex justify-content-center g-3 my-2">
+    <div className="container">
+      <div className="row my-2">
         <div className="col-6 col-md-3">
           <div className="p-3 bg-white text-dark shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>

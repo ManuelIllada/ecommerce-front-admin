@@ -20,71 +20,79 @@ const Panel = () => {
   return (
     <>
       <div className="container">
-        <div className="text-center py-4  fs-4 fw-bold text-dark  text-uppercase ">
+        <div className="text-center  my-3 fs-4 fw-bold text-dark  text-uppercase ">
           <i className="me-2">
             <FaUserSecret />
           </i>
           Panel Admin
         </div>
         <hr className="border-bottom  my-0 py-0" />
-        <div className="d-flex justify-content-center align-items-center">
-          <div className="flex-row list-group list-group-flush my-3">
+        <div className="container d-flex justify-content-around">
+          <div>
             <Link
-              className="list-group-item list-group-item-action bg-transparent fw-bold"
+              className="d-flex list-group-item list-group-item-action bg-transparent fw-bold"
               to={"/"}
             >
               <i className="me-2">
                 <AiFillDashboard />
               </i>
-              Dashboard
+              <p>Dashboard</p>
             </Link>
-            <hr className="border-bottom  my-0 py-0" />
+          </div>
+          <hr className="border-bottom  my-0 py-0" />
+          <div>
             <Link
-              className="list-group-item list-group-item-action bg-transparent  fw-bold"
+              className="d-flex list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/categories"}
             >
               <i className="me-2">
                 <MdCategory />
               </i>
-              Categories
+              <p>Categories</p>
             </Link>
-            <hr className="border-bottom  my-0 py-0" />
+          </div>
+          <hr className="border-bottom  my-0 py-0" />
+          <div>
             <Link
-              className="list-group-item list-group-item-action bg-transparent  fw-bold"
+              className="d-flex list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/products"}
             >
               <i className="me-2">
                 <GiSkateboard />
               </i>
-              Products
+              <p>Products</p>
             </Link>
-            <hr className="border-bottom  my-0 py-0" />
+          </div>
+          <hr className="border-bottom  my-0 py-0" />
+          <div>
             <Link
-              className="list-group-item list-group-item-action bg-transparent  fw-bold"
+              className="d-flex list-group-item list-group-item-action bg-transparent  fw-bold"
               to={"/users"}
             >
               <i className="me-2">
                 <FaUserAstronaut />
               </i>
-              Users
+              <p>Users</p>
             </Link>
-            <hr className="border-bottom  my-0 py-0" />
+          </div>
+          <hr className="border-bottom  my-0 py-0" />
+          <div>
             <Link
-              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+              className="d-flex list-group-item list-group-item-action bg-transparent text-danger fw-bold"
               onClick={handleLogout}
             >
               <i className="me-2">
                 <ImExit />
               </i>
-              Logout
+              <p>Logout</p>
             </Link>
           </div>
         </div>
         <hr className="border-bottom  my-0 py-0" />
-      </div>
 
-      <div className="container" id="page-content-wrapper">
-        <Outlet />
+        <div className="container d-flex justify-content-center">
+          <Outlet />
+        </div>
       </div>
     </>
   );

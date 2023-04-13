@@ -60,8 +60,8 @@ const TableUsers = () => {
             </Link>
           </div>
         </div>
-        <div className="col border rounded shadow bg-opacity-75">
-          <table className="table border rounded ">
+        <div className="">
+          <table className="table col border rounded shadow bg-opacity-75 ">
             <thead>
               <tr className="text-center">
                 <th scope="col">#</th>
