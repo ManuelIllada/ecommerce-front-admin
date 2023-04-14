@@ -19,14 +19,14 @@ const Panel = () => {
   };
   return (
     <>
-      <div className="container">
+      <div className="">
         <div className="text-center  my-3 fs-4 fw-bold text-dark  text-uppercase ">
           <i className="me-2">
             <FaUserSecret />
           </i>
           Panel Admin
         </div>
-        <hr className="border-bottom  my-0 py-0" />
+        <hr className="border-bottom  my-0 " />
         <div className="container d-flex justify-content-around">
           <div>
             <Link

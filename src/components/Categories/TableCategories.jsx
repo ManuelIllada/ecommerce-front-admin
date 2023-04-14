@@ -77,7 +77,7 @@ const TableCategories = () => {
                     <th scope="row">{cat.id}</th>
                     <td>{cat.name}</td>
                     <td>
-                      <Link to="/categories/edit" state={cat}>
+                      <Link className="me-4" to="/categories/edit" state={cat}>
                         <AiFillEdit className="text-primary" data={cat} />
                       </Link>
                       <Link>

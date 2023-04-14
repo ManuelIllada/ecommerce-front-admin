@@ -18,6 +18,7 @@ const CategoryNew = () => {
   const [name, setName] = useState("");
   const [media, setMedia] = useState("");
   const [cardImage, setCardImage] = useState("");
+  const [slug, setSlug] = useState("");
 
   const handleNewCategory = async (event) => {
     event.preventDefault();
@@ -25,6 +26,8 @@ const CategoryNew = () => {
     formData.append("name", name);
     formData.append("media", media);
     formData.append("cardImage", cardImage);
+    formData.append("slug", slug);
+
     const response = await axios({
       url: `${process.env.REACT_APP_API_URL}/categories`,
       method: "POST",
@@ -72,6 +75,16 @@ const CategoryNew = () => {
             name="cardImage"
             id="cardImage"
             onChange={(event) => setCardImage(event.target.files[0])}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="cardImage">Category Slug</label>
+          <input
+            type="text"
+            className="form-control "
+            name="categorySlug"
+            id="categorySlug"
+            onChange={(event) => setSlug(event.target.value)}
           />
         </div>
         <button className="btn btn-primary" type="submit">
