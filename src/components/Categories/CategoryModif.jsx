@@ -27,47 +27,38 @@ const CategoryModif = () => {
   return (
     <>
       <div className="container">
-        <h3>Ingrese Nuevo Nombre de Categoria</h3>
+        <h3 className="text-center my-3">Enter New Category Name</h3>
+        <div className=" d-flex justify-content-around">
+          <form onSubmit={handleSendModify}>
+            <div className="mb-3">
+              <label htmlFor="id" className="form-label">
+                ID:
+              </label>
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                disabled
+                value={location.state.id}
+              />
+            </div>
 
-        <form onSubmit={handleSendModify}>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              ID:
-            </label>
-            <input
-              type="text"
-              className="form-control w-25"
-              disabled
-              value={location.state.id}
-            />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              Name:
-            </label>
-            <input
-              className="form-control w-25"
-              name="categoryName"
-              type="text"
-              value={location.state.name}
-              disabled
-            />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="newName" className="form-label">
-              New Name
-            </label>
-            <input
-              type="text"
-              className="form-control w-25"
-              value={inputValue}
-              onChange={(event) => setInputValue(event.target.value)}
-            />
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Enviar
-          </button>
-        </form>
+            <div className="mb-3 ">
+              <label htmlFor="newName" className="form-label">
+                Name:
+              </label>
+              <input
+                type="text"
+                className="form-control form-control form-control-lg"
+                value={inputValue}
+                onChange={(event) => setInputValue(event.target.value)}
+                placeholder={location.state.name}
+              />
+            </div>
+            <button className="btn btn-primary" type="submit">
+              Enviar
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

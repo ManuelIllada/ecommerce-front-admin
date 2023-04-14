@@ -77,7 +77,9 @@ const TableUsers = () => {
               {usersList &&
                 usersList.map((user) => (
                   <tr key={user.id} className="text-center">
-                    <td>{user.id}</td>
+                    <td className="bold">
+                      <strong>{user.id}</strong>
+                    </td>
                     <td className=" d-none d-lg-block">
                       {
                         <img
@@ -96,9 +98,9 @@ const TableUsers = () => {
                       {user.firstname} - {user.lastname}
                     </td>
                     <td>{user.email}</td>
-                    <td className="d-flex justify-content-around">
+                    <td>
                       <Link to="/users/edit" state={user}>
-                        <AiFillEdit className="text-primary" />
+                        <AiFillEdit className="text-primary me-4" />
                       </Link>
                       <Link>
                         <BsFillTrashFill
@@ -106,7 +108,7 @@ const TableUsers = () => {
                           onClick={(event) =>
                             Swal.fire({
                               text:
-                                "Esta seguro que desea eliminar esta categoria?",
+                                "Are you sure you want to delete this category?",
                               icon: "error",
                               showDenyButton: true,
                               denyButtonText: "No",
@@ -114,7 +116,7 @@ const TableUsers = () => {
                             }).then((response) => {
                               if (response.isDenied) {
                                 notifyisDenied({
-                                  message: "ℹ️ Accion negada por el usuario",
+                                  message: "ℹ️ Action denied by user",
                                   type: "",
                                 });
                               } else {

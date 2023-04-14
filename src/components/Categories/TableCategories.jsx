@@ -76,8 +76,8 @@ const TableCategories = () => {
                   <tr key={cat.id} className="text-center">
                     <th scope="row">{cat.id}</th>
                     <td>{cat.name}</td>
-                    <td className="d-flex justify-content-around">
-                      <Link to="/categories/edit" state={cat}>
+                    <td>
+                      <Link className="me-4" to="/categories/edit" state={cat}>
                         <AiFillEdit className="text-primary" data={cat} />
                       </Link>
                       <Link>
@@ -86,7 +86,7 @@ const TableCategories = () => {
                           onClick={(event) =>
                             Swal.fire({
                               text:
-                                "Esta seguro que desea eliminar esta categoria?",
+                                "Are you sure you want to delete this category?",
                               icon: "error",
                               showDenyButton: true,
                               denyButtonText: "No",
@@ -94,7 +94,7 @@ const TableCategories = () => {
                             }).then((response) => {
                               if (response.isDenied) {
                                 notifyisDenied({
-                                  message: "ℹ️ Accion negada por el usuario",
+                                  message: "ℹ️ Action denied by user",
                                   type: "",
                                 });
                               } else {

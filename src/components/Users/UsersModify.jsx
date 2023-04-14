@@ -56,10 +56,9 @@ const UsersModify = () => {
   return (
     <>
       <div className="container">
-        <h3>Ingrese Datos a Modifdicar de User</h3>
-
+        <h3 className="my-3 text-center">Enter User Data to Modify</h3>
         <form onSubmit={handleSendModify} method="POST">
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="id" className="form-label">
               ID:
             </label>
@@ -70,7 +69,7 @@ const UsersModify = () => {
               value={location.state.id}
             />
           </div>
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="id" className="form-label">
               Firstname:
             </label>
@@ -81,9 +80,9 @@ const UsersModify = () => {
               onChange={(event) => setFirstname(event.target.value)}
             />
           </div>
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="description" className="form-label">
-              Firstname:
+              Lastname:
             </label>
             <input
               className="form-control w-25"
@@ -92,7 +91,7 @@ const UsersModify = () => {
               onChange={(event) => setLastname(event.target.value)}
             />
           </div>
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Email:
             </label>
@@ -104,7 +103,7 @@ const UsersModify = () => {
             />
           </div>
 
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Address:
             </label>
@@ -116,7 +115,7 @@ const UsersModify = () => {
             />
           </div>
 
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Password:
             </label>
@@ -127,7 +126,7 @@ const UsersModify = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </div>
-          <div className="mb-3 d-flex justify-content-around">
+          <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Phone:
             </label>
@@ -145,7 +144,7 @@ const UsersModify = () => {
             onChange={(event) => setAvatar(event.target.files[0])}
           />
 
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary my-3" type="submit">
             Enviar
           </button>
         </form>

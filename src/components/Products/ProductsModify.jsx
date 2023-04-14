@@ -61,133 +61,136 @@ const ProductsModify = () => {
   return (
     <>
       <div className="container">
-        <h3>Ingrese Datos a Modifdicar de Products</h3>
-
-        <form onSubmit={handleSendModify} method="POST">
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              ID:
-            </label>
+        <h3 className="my-3 text-center">
+          Ingrese Datos a Modifdicar de Products
+        </h3>
+        <div>
+          <form onSubmit={handleSendModify} method="POST">
+            <div className="mb-3 ">
+              <label htmlFor="id" className="form-label">
+                ID:
+              </label>
+              <input
+                type="text"
+                className="form-control w-25"
+                disabled
+                value={location.state.id}
+              />
+            </div>
+            <div className="mb-3 ">
+              <label htmlFor="id" className="form-label">
+                Name:
+              </label>
+              <input
+                className="form-control w-25"
+                name="productName"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
+            <div className="mb-3 ">
+              <label htmlFor="description" className="form-label">
+                Description:
+              </label>
+              <textarea
+                className="form-control w-50"
+                placeholder="Leave a description here"
+                id="description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              ></textarea>
+            </div>
+            <div className="mb-3 ">
+              <label htmlFor="Media" className="form-label">
+                Media
+              </label>
+            </div>
             <input
-              type="text"
-              className="form-control w-25"
-              disabled
-              value={location.state.id}
-            />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              Name:
-            </label>
-            <input
-              className="form-control w-25"
-              name="productName"
-              type="text"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="description" className="form-label">
-              Description:
-            </label>
-            <textarea
+              type="file"
               className="form-control w-50"
-              placeholder="Leave a description here"
-              id="description"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-            ></textarea>
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="Media" className="form-label">
-              Media
-            </label>
-          </div>
-          <input
-            type="file"
-            className="form-control w-50"
-            name="media"
-            multiple
-            onChange={(event) => setMedia(event.target.files)}
-          />
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              Price:
-            </label>
-            <input
-              className="form-control w-25"
-              name="price"
-              type="text"
-              value={price}
-              onChange={(event) => setPrice(event.target.value)}
+              name="media"
+              multiple
+              onChange={(event) => setMedia(event.target.files)}
             />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label htmlFor="id" className="form-label">
-              Stock:
-            </label>
-            <input
-              className="form-control w-25"
-              name="stock"
-              type="number"
-              value={stock}
-              onChange={(event) => setStock(event.target.value)}
-            />
-          </div>
-          <div className="mb-3 d-flex justify-content-around">
-            <label className="form-label" htmlFor="featured">
-              Featured
-            </label>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="featured"
-                value="true"
-                onChange={(event) => setFeatured(event.target.value)}
-              />
-              <label className="form-check-label" htmlFor="featured">
-                Yes
+            <div className="my-3 ">
+              <label htmlFor="id" className="form-label">
+                Price:
               </label>
-            </div>
-            <div className="form-check">
               <input
-                className="form-check-input"
-                type="radio"
-                name="featured"
-                value="false"
-                onChange={(event) => setFeatured(event.target.value)}
+                className="form-control w-25"
+                name="price"
+                type="text"
+                value={price}
+                onChange={(event) => setPrice(event.target.value)}
               />
-              <label className="form-check-label" htmlFor="flexRadioDefault2">
-                No
-              </label>
             </div>
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="Category">
-              Category
-            </label>
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              onChange={(event) => setCategory(event.target.value)}
-            >
-              <option value="none" selected>
-                Open this select menu
-              </option>
-              {categoriesList &&
-                categoriesList.map((category) => (
-                  <option value={category.id} key={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Enviar
-          </button>
-        </form>
+            <div className="mb-3 ">
+              <label htmlFor="id" className="form-label">
+                Stock:
+              </label>
+              <input
+                className="form-control w-25"
+                name="stock"
+                type="number"
+                value={stock}
+                onChange={(event) => setStock(event.target.value)}
+              />
+            </div>
+            <div className="mb-3 ">
+              <label className="form-label" htmlFor="featured">
+                Featured
+              </label>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="featured"
+                  value="true"
+                  onChange={(event) => setFeatured(event.target.value)}
+                />
+                <label className="form-check-label" htmlFor="featured">
+                  Yes
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="featured"
+                  value="false"
+                  onChange={(event) => setFeatured(event.target.value)}
+                />
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                  No
+                </label>
+              </div>
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="Category">
+                Category
+              </label>
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                onChange={(event) => setCategory(event.target.value)}
+              >
+                <option value="none" selected>
+                  Open this select menu
+                </option>
+                {categoriesList &&
+                  categoriesList.map((category) => (
+                    <option value={category.id} key={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <button className="btn btn-primary" type="submit">
+              Enviar
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );
