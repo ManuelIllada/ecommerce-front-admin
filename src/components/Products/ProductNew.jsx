@@ -27,7 +27,7 @@ const ProductNew = () => {
   const [media, setMedia] = useState([]);
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
-  const [featured, setFeatured] = useState("");
+
   const [category, setCategory] = useState("");
 
   const handleNewProduct = async (event) => {
@@ -37,7 +37,7 @@ const ProductNew = () => {
     formData.append("description", description);
     formData.append("price", price);
     formData.append("stock", stock);
-    formData.append("featured", featured);
+
     formData.append("category", category);
     for (let index = 0; index < media.length; index++) {
       formData.append("media", media[index]);
@@ -123,36 +123,7 @@ const ProductNew = () => {
             onChange={(event) => setStock(event.target.value)}
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label" htmlFor="featured">
-            Featured
-          </label>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="featured"
-              value="true"
-              id="featured"
-              onChange={(event) => setFeatured(event.target.value)}
-            />
-            <label className="form-check-label" htmlFor="featured">
-              Yes
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="featured"
-              value="false"
-              onChange={(event) => setFeatured(event.target.value)}
-            />
-            <label className="form-check-label" htmlFor="flexRadioDefault2">
-              No
-            </label>
-          </div>
-        </div>
+
         <div className="mb-3">
           <label className="form-label" htmlFor="Category">
             Category
@@ -161,6 +132,7 @@ const ProductNew = () => {
             className="form-select"
             aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
+            defaultValue={1}
           >
             <option value="none" selected>
               Open this select menu
