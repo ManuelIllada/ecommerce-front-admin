@@ -14,6 +14,7 @@ import ProductsModify from "./components/Products/ProductsModify";
 import UsersNew from "./components/Users/UsersNew";
 import UsersModify from "./components/Users/UsersModify";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import TableOrders from "./components/Orders/TableOrders";
 import Login from "./components/Login/Login";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="users/create" element={<UsersNew />} />
           <Route path="users/edit" element={<UsersModify />} />
           <Route path="users" element={<TableUsers />} />
+          <Route path="orders" element={<TableOrders />} />
         </Route>
       </Routes>
     </>

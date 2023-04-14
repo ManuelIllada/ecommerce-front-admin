@@ -3,7 +3,6 @@ import { useFetch } from "../../hooks/useFetch";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
 
 const ProductNew = () => {
   const notifySuccess = (message) =>
