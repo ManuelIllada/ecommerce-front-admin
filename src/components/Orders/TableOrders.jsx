@@ -30,8 +30,6 @@ const TableOrders = () => {
   }, [data]);
 
   const handleChangeStatus = async (orderId) => {
-    console.log("order: ", orderId);
-    console.log("status: ", newStatus);
     const response = await axios({
       method: "PATCH",
       url: `${process.env.REACT_APP_API_URL}/order/${orderId}`,
